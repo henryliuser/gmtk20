@@ -82,3 +82,5 @@ texture = ExtResource( 2 )
 
 [node name="cursor" parent="." instance=ExtResource( 6 )]
 [connection signal="released" from="buttons/vaccine" to="." method="_on_vaccine_released"]
+[connection signal="released" from="buttons/oils" to="." method="_on_oils_released"]
+[connection signal="released" from="buttons/tp" to="." method="_on_tp_released"]

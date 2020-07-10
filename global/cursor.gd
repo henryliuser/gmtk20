@@ -17,10 +17,12 @@ func _physics_process(delta):
 		if rotation_degrees > 360: rotation_degrees -= 360
 		print(rotation_degrees)
 	
-func select(path, scl):
+func select(path, scl, mod = Color("ffffff")):
 	var aoe = load("res://Items/AOE.tscn").instance()
 	aoe.thing = path
 	aoe.scale = Vector2(scl,scl)
+	aoe.modulate = mod
+	aoe.modulate.a = 0.5
 	get_tree().current_scene.add_child(aoe)
 	selected = true
 	tw.stop_all()
