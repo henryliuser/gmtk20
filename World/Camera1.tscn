@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/Tilemap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Karen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Customer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Employee.tscn" type="PackedScene" id=4]
 
 [node name="Camera1" type="Node2D"]
 
@@ -10,3 +13,16 @@ tile_data = PoolIntArray( 0, 14, 0, 1, 13, 0, 2, 13, 0, 3, 13, 0, 4, 13, 0, 5, 1
 [node name="Blocks" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 1, 1 )
 tile_data = PoolIntArray( 196625, 14, 0, 196626, 17, 0, 262161, 10, 0, 262162, 12, 0, 327697, 10, 0, 327698, 18, 0, 327699, 13, 0, 327700, 13, 0, 327701, 13, 0, 327702, 17, 0, 393233, 10, 0, 393234, 18, 0, 393235, 11, 0, 393236, 11, 0, 393237, 11, 0, 393238, 16, 0, 458769, 10, 0, 458770, 12, 0, 524305, 15, 0, 524306, 16, 0 )
+
+[node name="Karen" parent="." instance=ExtResource( 2 )]
+position = Vector2( 919.084, 379.064 )
+rotation = -3.07714
+
+[node name="Customer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 492.2, 349.905 )
+
+[node name="Employee" parent="." instance=ExtResource( 4 )]
+position = Vector2( 151.626, 359.236 )
+rotation = -0.163404
+pointA = Vector2( 145, 145 )
+pointB = Vector2( 145, 345 )
