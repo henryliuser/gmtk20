@@ -8,7 +8,7 @@ var velocity = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	velocity = Vector2(randf(),randf())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -16,4 +16,5 @@ func _process(delta):
 	if time > randf() * 10:
 		time = 0;
 		velocity = Vector2(randf(),randf()) # might wanna change this to angle based, unsure
+		rotation_degrees = atan2(velocity.y, velocity.x)
 	move_and_slide(velocity)
