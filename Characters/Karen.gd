@@ -32,7 +32,7 @@ func _physics_process(delta):
 	elif notChasing and collider != null and ("customer" in collider or "employee" in collider):
 		angle = atan2($RayCast2D.get_collider().position.y - position.y, $RayCast2D.get_collider().position.x - position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
-	elif notChasing and time > 1 + randf() * 15:
+	elif notChasing and (time > 1 + randf() * 15 or is_on_wall()):
 		time = 0;
 		angle = (randi()%360 - 180)*(2*PI)/360
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
@@ -80,12 +80,12 @@ func vax(chain = false):
 	if !chain: vax_instances -= 1
 
 func calc_sprite_rot():
-	if rotation_degrees >= 360: rotation_degrees -= 360
-	if rotation_degrees <= -360: rotation_degrees += 360
+	while rotation_degrees >= 360: rotation_degrees -= 360
+	while rotation_degrees <= -360: rotation_degrees += 360
 	var rot = rotation_degrees
 	if rotation_degrees < 0: rot = 360+rotation_degrees
 	$Sprite.global_rotation_degrees = 0
-	if rot >= 315 and rot < 45: $Sprite.play("right")
+	if rot >= 315 or rot < 45: $Sprite.play("right")
 	if rot >= 45 and rot < 135: $Sprite.play("front")
 	if rot >= 135 and rot < 225: $Sprite.play("left")
 	if rot >= 225 and rot < 315: $Sprite.play("back")
