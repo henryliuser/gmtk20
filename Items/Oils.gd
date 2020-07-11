@@ -13,6 +13,7 @@ var karen_list = {} #badly named but i copy pasted it
 var alerted_karens = []
 
 func _ready():
+	HUD.oils.cooldown()
 	aoe.material = aoe.material.duplicate()
 	aoe.material.set_shader_param("time_factor", randf()+randf()+randf()+randf())
 	aoe.material.set_shader_param("amplitude", Vector2(3*randf()+1, 4*randf()+1))
