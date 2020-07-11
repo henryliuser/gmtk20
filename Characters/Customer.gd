@@ -21,7 +21,7 @@ func _process(delta):
 		angle = (randi()%360 - 180)*(2*PI)/360
 		velocity = Vector2(cos(angle),sin(angle)) * 50
 	move_and_slide(velocity)
-	rotation = lerp(rotation, angle, .1)
+	rotation = lerp_angle(rotation, angle, .1)
 
 func _on_Area2D_body_entered(body):
 	if "rage" in body:

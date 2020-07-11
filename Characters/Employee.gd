@@ -30,7 +30,7 @@ func _process(delta):
 	vec = vec/vec.length()
 	vec = vec * 50
 	angle = atan2(vec.y, vec.x)
-	rotation = lerp(rotation, angle, .1)
+	rotation = lerp_angle(rotation, angle, .1)
 	move_and_slide(speed * vec)
 
 

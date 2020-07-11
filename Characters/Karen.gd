@@ -5,8 +5,9 @@ extends KinematicBody2D
 #speed/rage, infection status maybe
 var time = 0
 var velocity = Vector2(0,0)
-var rage = 1
+var rage = 1.0
 var angle = 0
+var notChasing = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,13 +18,20 @@ func _ready():
 func _process(delta):
 	time += delta
 	var collider = $RayCast2D.get_collider()
-	if collider != null and ("customer" in collider or "employee" in collider):
+	if notChasing and collider != null and ("customer" in collider or "employee" in collider):
 		angle = atan2($RayCast2D.get_collider().position.y - position.y, $RayCast2D.get_collider().position.x - position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
-	elif time > 1 + randf() * 15:
+	elif notChasing and time > 1 + randf() * 15:
 		time = 0;
 		angle = (randi()%360 - 180)*(2*PI)/360
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 	move_and_slide(velocity)
-	rotation = lerp(rotation, angle, .1)
+	rotation = lerp_angle(rotation, angle, .1)
 
+func tpAlert(x, y):
+	notChasing = false
+	angle = atan2(y - position.y, x-position.x)
+	velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
+	
+func untpAlert():
+	notChasing = true
