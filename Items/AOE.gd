@@ -1,9 +1,10 @@
 extends Sprite
 var thing = ""
+var clicked = false
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
-#		yield(get_tree().create_timer(0.1, false), "timeout")
+		clicked = true
 		var item = load(thing).instance()
 		item.position = global_position
 		get_tree().current_scene.add_child(item)
@@ -20,4 +21,4 @@ func _input(event):
 		queue_free()
 
 func _physics_process(delta):
-	global_position = get_global_mouse_position()
+	if not clicked: global_position = get_global_mouse_position()
