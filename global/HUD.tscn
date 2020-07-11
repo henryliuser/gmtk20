@@ -61,36 +61,32 @@ texture = ExtResource( 4 )
 [node name="buttons" type="Node2D" parent="."]
 
 [node name="vax" parent="buttons" instance=ExtResource( 9 )]
-rotation = 5.96047e-08
+position = Vector2( 580, 556 )
 scene = "res://Items/Vaccine.tscn"
+scl = 1.75
 color = Color( 0.490196, 0.788235, 0.4, 1 )
 
 [node name="sprite" type="AnimatedSprite" parent="buttons/vax"]
 show_behind_parent = true
-position = Vector2( 33.9311, 40.7252 )
 rotation = 2.35619
 scale = Vector2( 1.3, 1.7 )
 frames = ExtResource( 5 )
 
 [node name="oils" parent="buttons" instance=ExtResource( 9 )]
-position = Vector2( 624, 520 )
-rotation = 5.96047e-08
-base_cd = 7.0
+position = Vector2( 660, 556 )
+base_cd = 6.0
 scene = "res://Items/Oils.tscn"
 scl = 3.0
 color = Color( 0.866667, 0.498039, 0.498039, 1 )
 
 [node name="sprite" type="Sprite" parent="buttons/oils"]
 show_behind_parent = true
-position = Vector2( 36, 36 )
-rotation = -5.96047e-08
 scale = Vector2( 2.7, 2.7 )
 texture = ExtResource( 3 )
 
 [node name="tp" parent="buttons" instance=ExtResource( 9 )]
-position = Vector2( 704, 520 )
-rotation = 5.96047e-08
-base_cd = 10.0
+position = Vector2( 740, 556 )
+base_cd = 7.0
 scene = "res://Items/ToiletPaper.tscn"
 scl = 1.5
 color = Color( 1, 1, 1, 1 )
@@ -98,12 +94,10 @@ stacking = true
 
 [node name="sprite" type="Sprite" parent="buttons/tp"]
 show_behind_parent = true
-position = Vector2( 37, 36.353 )
-rotation = -5.96047e-08
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="TPStacks" type="Label" parent="."]
 margin_left = 744.403
 margin_top = 511.836
 margin_right = 784.403
@@ -119,4 +113,3 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="cursor" parent="CanvasLayer" instance=ExtResource( 6 )]
-[connection signal="pressed" from="buttons/tp" to="." method="_on_tp_pressed"]

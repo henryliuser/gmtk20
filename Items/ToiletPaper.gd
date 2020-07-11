@@ -54,3 +54,8 @@ func _on_Zone_body_exited(body):
 	if "rage" in body and karen_list[body] != null:
 		karen_list[body].queue_free()
 		karen_list.erase(body)
+
+
+func _on_TP2_body_exited(body):
+	if "rage" in body: 
+		body.untpAlert()

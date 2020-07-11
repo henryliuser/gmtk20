@@ -33,3 +33,4 @@ shape = SubResource( 2 )
 [connection signal="body_entered" from="Zone" to="." method="_on_Zone_body_entered"]
 [connection signal="body_exited" from="Zone" to="." method="_on_Zone_body_exited"]
 [connection signal="body_entered" from="TP2" to="." method="_on_TP2_body_entered"]
+[connection signal="body_exited" from="TP2" to="." method="_on_TP2_body_exited"]
