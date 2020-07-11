@@ -8,6 +8,7 @@ var target = Vector2()
 var angle = 0
 var speed = 0
 var employee = 0
+var forklift = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,8 +38,10 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if "rage" in body:
-		#death
-		die()
+		if !forklift:
+			die()
+		else:
+			body.die()
 
 func die():
 	queue_free()
@@ -53,3 +56,6 @@ func calc_sprite_rot():
 	if rot >= 45 and rot < 135: $Sprite.play("front")
 	if rot >= 135 and rot < 225: $Sprite.play("left")
 	if rot >= 225 and rot < 315: $Sprite.play("back")
+
+func toggleForklift():
+	forklift =  !forklift

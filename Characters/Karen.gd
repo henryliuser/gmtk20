@@ -9,6 +9,7 @@ var rage = 1.0 setget set_rage
 var angle = 0
 var notChasing = true
 var oilChasing = false
+var text
 
 var vax_instances = 0
 var vax_center = Vector2()
@@ -30,8 +31,12 @@ func _physics_process(delta):
 		if is_on_wall(): vax(true)
 		
 	elif notChasing and collider != null and ("customer" in collider or "employee" in collider):
+		spawn_text(3, "it's high noon!")
 		angle = atan2($RayCast2D.get_collider().position.y - position.y, $RayCast2D.get_collider().position.x - position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
+		if collider.has_method("toggleForklift") and collider.forklift == true:
+			angle -= PI
+			velocity *= -1
 	elif notChasing and (time > 1 + randf() * 15 or is_on_wall()):
 		time = 0;
 		angle = (randi()%360 - 180)*(2*PI)/360
@@ -40,6 +45,7 @@ func _physics_process(delta):
 	move_and_slide(velocity)
 	rotation = lerp_angle(rotation, angle, .1)
 	calc_sprite_rot()
+	position_text()
 #	rotation = lerp_angle(rotation, (angle/4)+PI/2, .1)
 #	rotation = 0
 
@@ -92,3 +98,16 @@ func calc_sprite_rot():
 
 func die():
 	queue_free()
+
+func position_text():
+	if text != null:
+		text.rect_position = Vector2(30, -30) + global_position
+
+func spawn_text(lifetime, line):
+	if text == null or text.alive != true:
+		text = load("res://Dialogue/TextBubble.tscn").instance()
+		text.setLifetime(lifetime)
+		text.text = line
+		text.align = 1
+		text.valign = 1
+		get_tree().current_scene.add_child(text)
