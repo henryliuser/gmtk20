@@ -60,5 +60,4 @@ rotation = -1.5708
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "right"
-frame = 3
 playing = true

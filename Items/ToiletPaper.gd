@@ -28,23 +28,26 @@ func _process(delta):
 			karen.tpAlert(position.x, position.y)
 			alerted_karens.append(karen)
 
-
 func _on_TP2_body_entered(body):
 	if "rage" in body:
-		#death
-		for karen in alerted_karens:
-			karen.untpAlert()
-		for karen in karen_list:
-			karen_list[karen].queue_free()
 		queue_free()
+#	if "rage" in body:
+#		#death
+#		for karen in alerted_karens:
+#			karen.untpAlert()
+#		for karen in karen_list:
+#			karen_list[karen].queue_free()
+#		queue_free()
 
 
 func _on_Zone_body_entered(body):
 	if "rage" in body:
-		karen_list[body] = RayCast2D.new()
-		karen_list[body].position = global_position
-		karen_list[body].enabled = true
-		get_tree().current_scene.add_child(karen_list[body])
+		var ray = RayCast2D.new()
+		ray.position = Vector2()
+		ray.enabled = true
+		ray.exclude_parent = true
+		karen_list[body] = ray
+		add_child(ray)
 
 
 func _on_Zone_body_exited(body):
