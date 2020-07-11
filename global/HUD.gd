@@ -9,4 +9,7 @@ func _on_oils_released():
 
 func _on_tp_released():
 	cursor.select("res://Items/ToiletPaper.tscn", 1.5)
+	var aoe2 = load("res://Items/AOE.tscn").instance()
+	aoe2.scale = Vector2(4,4)
+	get_tree().current_scene.add_child(aoe2)
 

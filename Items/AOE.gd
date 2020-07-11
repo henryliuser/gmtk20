@@ -5,9 +5,11 @@ var clicked = false
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		clicked = true
-		var item = load(thing).instance()
-		item.position = global_position
-		get_tree().current_scene.add_child(item)
+		var item
+		if thing != "": 
+			item = load(thing).instance()
+			item.position = global_position
+			get_tree().current_scene.add_child(item)
 		$Tween.interpolate_property(self, "scale", scale, scale+Vector2(0.2,0.2), 0.2,
 			Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		$Tween.interpolate_property(self, "scale", scale, Vector2(), 0.5,
