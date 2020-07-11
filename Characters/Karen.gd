@@ -25,7 +25,9 @@ func _physics_process(delta):
 	if vax_instances > 0:
 		var ang = atan2(vax_center.y-global_position.y, vax_center.x-global_position.x)-PI/2
 		var spd = Vector2(cos(ang), sin(ang))
+		angle = ang
 		velocity = 50*rage*spd
+		if is_on_wall(): vax(true)
 		
 	elif notChasing and collider != null and ("customer" in collider or "employee" in collider):
 		angle = atan2($RayCast2D.get_collider().position.y - position.y, $RayCast2D.get_collider().position.x - position.x)
@@ -37,6 +39,9 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity)
 	rotation = lerp_angle(rotation, angle, .1)
+	calc_sprite_rot()
+#	rotation = lerp_angle(rotation, (angle/4)+PI/2, .1)
+#	rotation = 0
 
 func tpAlert(x, y):
 	if not oilChasing:
@@ -59,15 +64,28 @@ func unoilAlert():
 
 func set_rage(ragen):
 	if ragen < 1:
-		rage = 1
+		rage = 1.0
 	else:
 		rage = ragen
+	modulate.g = clamp(1/(rage/2.0), 0, 1)
+	modulate.b = clamp(1/(rage/2.0), 0, 1)
+	print(rage)
 		
-func vax():
-	rage += 2
-	vax_instances += 1
+func vax(chain = false):
+	if !chain: 
+		vax_instances += 1
+		set_rage(rage+2)
 	vax_center = global_position + Vector2((randi()%101-50)*2, (randi()%101-50)*2)
 	yield(get_tree().create_timer(3, false), "timeout")
-	vax_instances -= 1
+	if !chain: vax_instances -= 1
 
-
+func calc_sprite_rot():
+	if rotation_degrees >= 360: rotation_degrees -= 360
+	if rotation_degrees <= -360: rotation_degrees += 360
+	var rot = rotation_degrees
+	if rotation_degrees < 0: rot = 360+rotation_degrees
+	$Sprite.global_rotation_degrees = 0
+	if rot >= 315 and rot < 45: $Sprite.play("right")
+	if rot >= 45 and rot < 135: $Sprite.play("front")
+	if rot >= 135 and rot < 225: $Sprite.play("left")
+	if rot >= 225 and rot < 315: $Sprite.play("back")

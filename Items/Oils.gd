@@ -61,7 +61,7 @@ func _physics_process(delta):
 	if lifetime <= 0 and !done: end()
 	for x in karens:
 #		print(x.name + " " + str(x.rage))
-		x.rage -= delta/2
+		x.rage -= delta/1.5
 	for karen in karen_list.keys():
 		karen_list[karen].cast_to = 1.5 * (karen.position - position)
 		var collider = karen_list[karen].get_collider()

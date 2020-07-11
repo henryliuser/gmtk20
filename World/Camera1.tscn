@@ -19,7 +19,7 @@ position = Vector2( 919.084, 379.064 )
 rotation = -3.07714
 
 [node name="Customer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 492.2, 349.905 )
+position = Vector2( 140.038, 279.682 )
 
 [node name="Employee" parent="." instance=ExtResource( 4 )]
 position = Vector2( 151.626, 359.236 )

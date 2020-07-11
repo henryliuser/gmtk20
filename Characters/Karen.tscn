@@ -1,9 +1,47 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Characters/Karen.gd" type="Script" id=1]
-[ext_resource path="res://Assets/karenTemp.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Karen/Right/Karen15.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Karen/Front/Karen3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Karen/Front/Karen1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Karen/Front/Karen4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Karen/Front/Karen2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Karen/Right/Karen14.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Karen/Back/Karen5.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Karen/Left/Karen9.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Karen/Back/Karen6.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Karen/Back/Karen7.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Karen/Left/Karen10.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Karen/Right/Karen13.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Karen/Left/Karen12.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Karen/Back/Karen8.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Karen/Left/Karen11.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Karen/Right/Karen16.png" type="Texture" id=17]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+} ]
 
 [node name="Karen" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -12,12 +50,15 @@ script = ExtResource( 1 )
 scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-rotation = 3.14159
-scale = Vector2( 3, 3 )
-texture = ExtResource( 2 )
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = -1.5708
 enabled = true
 cast_to = Vector2( 0, 500 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+frames = SubResource( 2 )
+animation = "right"
+frame = 3
+playing = true
