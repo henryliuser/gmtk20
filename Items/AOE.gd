@@ -5,7 +5,6 @@ var clicked = false
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and !clicked:
 		clicked = true
-		print('yuh1')
 		var item
 		if thing != "": 
 			item = load(thing).instance()

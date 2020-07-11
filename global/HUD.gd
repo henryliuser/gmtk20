@@ -37,7 +37,13 @@ onready var tp = $buttons/tp
 #func _on_vax_animation_finished():
 #	$buttons/vaccine/vax.stop()
 	
-func cooldown(tw, texture, cd):
-	tw.stop_all()
-	tw.interpolate_property(texture, "value", 100, 0, cd)
-	tw.start()
+#func cooldown(tw, texture, cd):
+#	tw.stop_all()
+#	tw.interpolate_property(texture, "value", 100, 0, cd)
+#	tw.start()
+
+func _on_tp_pressed():
+	if tp.tex_progress.value == 0:
+		var aoe2 = load("res://Items/AOE.tscn").instance()
+		aoe2.scale = Vector2(4,4)
+		get_tree().current_scene.call_deferred("add_child", aoe2)

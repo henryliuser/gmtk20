@@ -5,7 +5,7 @@ var alerted_karens = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	HUD.tp.cooldown()
+	HUD.tp.update_stacks(-1)
 	var target = global_position
 	global_position = Vector2(750, 555)
 	modulate.a = 0.3
@@ -49,7 +49,6 @@ func _on_Zone_body_entered(body):
 		ray.exclude_parent = true
 		karen_list[body] = ray
 		add_child(ray)
-
 
 func _on_Zone_body_exited(body):
 	if "rage" in body and karen_list[body] != null:

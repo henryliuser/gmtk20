@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/HUD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TP.png" type="Texture" id=2]
@@ -7,7 +7,16 @@
 [ext_resource path="res://Assets/Syringe/vax.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://global/cursor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://global/HUD.gd" type="Script" id=7]
+[ext_resource path="res://joystix monospace.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://global/HUDButton.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
 
 [node name="HUD" type="Node2D"]
 script = ExtResource( 7 )
@@ -85,6 +94,7 @@ base_cd = 10.0
 scene = "res://Items/ToiletPaper.tscn"
 scl = 1.5
 color = Color( 1, 1, 1, 1 )
+stacking = true
 
 [node name="sprite" type="Sprite" parent="buttons/tp"]
 show_behind_parent = true
@@ -93,6 +103,20 @@ rotation = -5.96047e-08
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = 744.403
+margin_top = 511.836
+margin_right = 784.403
+margin_bottom = 547.836
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="cursor" parent="CanvasLayer" instance=ExtResource( 6 )]
+[connection signal="pressed" from="buttons/tp" to="." method="_on_tp_pressed"]
