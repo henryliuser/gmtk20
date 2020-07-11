@@ -22,6 +22,7 @@ func select(path, scl, mod = Color("ffffff")):
 	aoe.scale = Vector2(scl,scl)
 	aoe.modulate = mod
 	aoe.modulate.a = 0.5
+	aoe.position = get_global_mouse_position()
 	get_tree().current_scene.add_child(aoe)
 	selected = true
 	tw.stop_all()
@@ -29,6 +30,7 @@ func select(path, scl, mod = Color("ffffff")):
 	tw.start()
 	
 func click():
+	print(global_position)
 	selected = false
 	scale = Vector2(3.5,3.5)
 	tw.stop_all()

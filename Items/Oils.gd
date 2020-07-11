@@ -1,10 +1,43 @@
 extends Node2D
 var karens = {}
 export var lifetime = 5
+onready var sprite = $oilsTemp
+onready var hitbox = $aoe/hitbox
+onready var tw = $Tween
+onready var aoe = $aoe
+var started = false
 var done = false
+var time = 0.8
 
 var karen_list = {} #badly named but i copy pasted it
 var alerted_karens = []
+
+func _ready():
+	aoe.material = aoe.material.duplicate()
+	aoe.material.set_shader_param("time_factor", randf()+randf()+randf()+randf())
+	aoe.material.set_shader_param("amplitude", Vector2(3*randf()+1, 4*randf()+1))
+	modulate.a = 0.3
+	$Tween.interpolate_property(self, "modulate:a", modulate.a, 1, 1)
+	var target = global_position + Vector2(-30,2)
+	tw.interpolate_property(sprite, "global_position", Vector2(660,560), target, time,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tw.interpolate_property(aoe, "scale", Vector2(), Vector2(3,3), time+0.5,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, time+0.1)
+	tw.interpolate_property(sprite, "rotation_degrees", 0, 720, time,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tw.interpolate_property(sprite, "rotation_degrees", 0, 64, 0.4,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, time)
+	tw.interpolate_property(sprite, "rotation_degrees", 64, 0, 0.4,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, time+0.6)
+	tw.interpolate_property(sprite, "rotation_degrees", 0, 100, time,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 2)
+	tw.interpolate_property(sprite, "global_position", target, Vector2(-50,200), 
+		time, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 2)
+	tw.start()
+	yield(get_tree().create_timer(time+0.1, false), "timeout")
+	aoe.visible = true
+	hitbox.monitoring = true
+	started = true
 
 func _on_hitbox_body_entered(body):
 	if "rage" in body:
@@ -24,7 +57,7 @@ func _on_hitbox_body_exited(body):
 		karen_list.erase(body)
 
 func _physics_process(delta):
-	lifetime -= delta
+	if started: lifetime -= delta
 	if lifetime <= 0 and !done: end()
 	for x in karens:
 #		print(x.name + " " + str(x.rage))
@@ -39,7 +72,7 @@ func _physics_process(delta):
 func end():
 	done = true
 	$Tween.stop_all()
-	$Tween.interpolate_property(self, "scale", scale, Vector2(), 0.5, 
+	$Tween.interpolate_property(aoe, "scale", aoe.scale, Vector2(), 0.5, 
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	$Tween.start()
 	yield(get_tree().create_timer(0.6, false), "timeout")
