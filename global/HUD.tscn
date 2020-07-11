@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 36, 36 )
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="background" type="Node2D" parent="."]
@@ -80,7 +80,9 @@ position = Vector2( 38.0125, 36.3529 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
-[node name="cursor" parent="." instance=ExtResource( 6 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="cursor" parent="CanvasLayer" instance=ExtResource( 6 )]
 [connection signal="released" from="buttons/vaccine" to="." method="_on_vaccine_released"]
 [connection signal="released" from="buttons/oils" to="." method="_on_oils_released"]
 [connection signal="released" from="buttons/tp" to="." method="_on_tp_released"]

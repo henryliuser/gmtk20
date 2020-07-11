@@ -15,7 +15,6 @@ func _physics_process(delta):
 	if selected: 
 		rotation_degrees += rot_speed_deg * delta
 		if rotation_degrees > 360: rotation_degrees -= 360
-		print(rotation_degrees)
 	
 func select(path, scl, mod = Color("ffffff")):
 	var aoe = load("res://Items/AOE.tscn").instance()
@@ -29,7 +28,6 @@ func select(path, scl, mod = Color("ffffff")):
 	tw.interpolate_property(self,"scale", scale, Vector2(1.8,1.8),0.2,Tween.TRANS_CUBIC,Tween.EASE_OUT)
 	tw.start()
 	
-
 func click():
 	selected = false
 	scale = Vector2(3.5,3.5)
