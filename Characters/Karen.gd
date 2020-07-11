@@ -89,3 +89,6 @@ func calc_sprite_rot():
 	if rot >= 45 and rot < 135: $Sprite.play("front")
 	if rot >= 135 and rot < 225: $Sprite.play("left")
 	if rot >= 225 and rot < 315: $Sprite.play("back")
+
+func die():
+	queue_free()

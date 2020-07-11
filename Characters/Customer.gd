@@ -28,7 +28,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if "rage" in body:
 		#death
-		queue_free()
+		die()
 
 func oilAlert(x, y):
 	oilChasing = true
@@ -39,3 +39,6 @@ func oilAlert(x, y):
 func unoilAlert():
 	notChasing = true
 	oilChasing = false
+
+func die():
+	queue_free()
