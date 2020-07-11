@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/HUD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TP.png" type="Texture" id=2]
@@ -7,12 +7,7 @@
 [ext_resource path="res://Assets/Syringe/vax.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://global/cursor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://global/HUD.gd" type="Script" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 36, 36 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 36, 36 )
+[ext_resource path="res://global/HUDButton.tscn" type="PackedScene" id=9]
 
 [node name="HUD" type="Node2D"]
 script = ExtResource( 7 )
@@ -56,45 +51,48 @@ texture = ExtResource( 4 )
 
 [node name="buttons" type="Node2D" parent="."]
 
-[node name="vaccine" type="TouchScreenButton" parent="buttons"]
-position = Vector2( 544, 520 )
-shape = SubResource( 1 )
+[node name="vax" parent="buttons" instance=ExtResource( 9 )]
+rotation = 5.96047e-08
+scene = "res://Items/Vaccine.tscn"
+color = Color( 0.490196, 0.788235, 0.4, 1 )
 
-[node name="vax" type="AnimatedSprite" parent="buttons/vaccine"]
+[node name="sprite" type="AnimatedSprite" parent="buttons/vax"]
+show_behind_parent = true
 position = Vector2( 33.9311, 40.7252 )
 rotation = 2.35619
 scale = Vector2( 1.3, 1.7 )
 frames = ExtResource( 5 )
 
-[node name="vaxanim" type="Area2D" parent="buttons/vaccine"]
-position = Vector2( 36, 36 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="buttons/vaccine/vaxanim"]
-shape = SubResource( 3 )
-
-[node name="oils" type="TouchScreenButton" parent="buttons"]
+[node name="oils" parent="buttons" instance=ExtResource( 9 )]
 position = Vector2( 624, 520 )
-shape = SubResource( 1 )
+rotation = 5.96047e-08
+base_cd = 7.0
+scene = "res://Items/Oils.tscn"
+scl = 3.0
+color = Color( 0.866667, 0.498039, 0.498039, 1 )
 
-[node name="oilsTemp" type="Sprite" parent="buttons/oils"]
-position = Vector2( 36.262, 36 )
+[node name="sprite" type="Sprite" parent="buttons/oils"]
+show_behind_parent = true
+position = Vector2( 36, 36 )
+rotation = -5.96047e-08
 scale = Vector2( 2.7, 2.7 )
 texture = ExtResource( 3 )
 
-[node name="tp" type="TouchScreenButton" parent="buttons"]
+[node name="tp" parent="buttons" instance=ExtResource( 9 )]
 position = Vector2( 704, 520 )
-shape = SubResource( 1 )
+rotation = 5.96047e-08
+base_cd = 10.0
+scene = "res://Items/ToiletPaper.tscn"
+scl = 1.5
+color = Color( 1, 1, 1, 1 )
 
-[node name="TP" type="Sprite" parent="buttons/tp"]
-position = Vector2( 38.0125, 36.3529 )
+[node name="sprite" type="Sprite" parent="buttons/tp"]
+show_behind_parent = true
+position = Vector2( 37, 36.353 )
+rotation = -5.96047e-08
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="cursor" parent="CanvasLayer" instance=ExtResource( 6 )]
-[connection signal="released" from="buttons/vaccine" to="." method="_on_vaccine_released"]
-[connection signal="animation_finished" from="buttons/vaccine/vax" to="." method="_on_vax_animation_finished"]
-[connection signal="mouse_entered" from="buttons/vaccine/vaxanim" to="." method="_on_oilanim_mouse_entered"]
-[connection signal="released" from="buttons/oils" to="." method="_on_oils_released"]
-[connection signal="released" from="buttons/tp" to="." method="_on_tp_released"]

@@ -5,6 +5,7 @@ var alerted_karens = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	HUD.tp.cooldown()
 	var target = global_position
 	global_position = Vector2(750, 555)
 	modulate.a = 0.3

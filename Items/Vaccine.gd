@@ -6,6 +6,7 @@ var target = Vector2()
 var time = 0.9
 
 func _ready():
+	HUD.vax.cooldown()
 	target = global_position
 	global_position = Vector2(530, 595)
 	modulate.a = 0.3
