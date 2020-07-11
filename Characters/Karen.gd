@@ -5,9 +5,10 @@ extends KinematicBody2D
 #speed/rage, infection status maybe
 var time = 0
 var velocity = Vector2(0,0)
-var rage = 1.0
+var rage = 1.0 setget set_rage
 var angle = 0
 var notChasing = true
+var oilChasing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,9 +30,26 @@ func _process(delta):
 	rotation = lerp_angle(rotation, angle, .1)
 
 func tpAlert(x, y):
+	if not oilChasing:
+		notChasing = false
+		angle = atan2(y - position.y, x-position.x)
+		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
+	
+func untpAlert():
+	notChasing = true
+
+func oilAlert(x, y):
+	oilChasing = true
 	notChasing = false
 	angle = atan2(y - position.y, x-position.x)
 	velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 	
-func untpAlert():
+func unoilAlert():
 	notChasing = true
+	oilChasing = false
+
+func set_rage(ragen):
+	if ragen < 1:
+		rage = 1
+	else:
+		rage = ragen
