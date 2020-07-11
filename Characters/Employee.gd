@@ -24,7 +24,7 @@ func _process(delta):
 		 target = pointA
 	vec = target - position;
 	if vec.length() < 10:
-		speed = lerp(speed, 0, .1)
+		speed = lerp(speed, .1, .1)
 	else:
 		speed = lerp(speed, 1, .1)
 	vec = vec/vec.length()
@@ -32,6 +32,7 @@ func _process(delta):
 	angle = atan2(vec.y, vec.x)
 	rotation = lerp_angle(rotation, angle, .1)
 	move_and_slide(speed * vec)
+	calc_sprite_rot()
 
 
 func _on_Area2D_body_entered(body):
@@ -41,3 +42,14 @@ func _on_Area2D_body_entered(body):
 
 func die():
 	queue_free()
+
+func calc_sprite_rot():
+	while rotation_degrees >= 360: rotation_degrees -= 360
+	while rotation_degrees <= -360: rotation_degrees += 360
+	var rot = rotation_degrees
+	if rotation_degrees < 0: rot = 360+rotation_degrees
+	$Sprite.global_rotation_degrees = 0
+	if rot >= 315 or rot < 45: $Sprite.play("right")
+	if rot >= 45 and rot < 135: $Sprite.play("front")
+	if rot >= 135 and rot < 225: $Sprite.play("left")
+	if rot >= 225 and rot < 315: $Sprite.play("back")
