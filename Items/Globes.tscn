@@ -1,17 +1,46 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Items/Globes.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Globe/Stand/Globe6.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Globe/Stand/Globe5.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="Globes" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="sprites"]
+position = Vector2( -14.9259, 4.41387 )
+rotation = -0.287979
+scale = Vector2( 0.9, 0.9 )
+frames = SubResource( 1 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="sprites"]
+position = Vector2( 1.38124, -2.49267 )
+frames = SubResource( 1 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="sprites"]
+position = Vector2( 11.1655, 10.7449 )
+rotation = 0.435757
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2( 3, 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

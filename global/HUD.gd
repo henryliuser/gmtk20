@@ -5,6 +5,7 @@ var employee_mult = 1
 onready var vax = $buttons/vax
 onready var oils = $buttons/oils
 onready var tp = $buttons/tp
+onready var globes = $buttons/globes
 
 func _process(delta):
 	if get_tree().current_scene.name == "Warudo":

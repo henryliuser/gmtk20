@@ -31,14 +31,23 @@ script = ExtResource( 3 )
 position = Vector2( 0, -512 )
 
 [node name="Karen" parent="rooms/Camera1" instance=ExtResource( 7 )]
-position = Vector2( 919.084, 379.064 )
-rotation = -3.07714
+position = Vector2( 774.756, 866.611 )
+rotation = -1.88538
 
 [node name="Customer" parent="rooms/Camera1" instance=ExtResource( 9 )]
-position = Vector2( 140.038, 279.682 )
+position = Vector2( -41.5289, 273.183 )
+
+[node name="Customer2" parent="rooms/Camera1" instance=ExtResource( 9 )]
+position = Vector2( 217.482, 531.376 )
 
 [node name="Employee" parent="rooms/Camera1" instance=ExtResource( 8 )]
-position = Vector2( 151.626, 359.236 )
+position = Vector2( -348.241, 535.246 )
+rotation = -0.163404
+pointA = Vector2( 145, 145 )
+pointB = Vector2( 145, 345 )
+
+[node name="Employee2" parent="rooms/Camera1" instance=ExtResource( 8 )]
+position = Vector2( -297.634, 887.599 )
 rotation = -0.163404
 pointA = Vector2( 145, 145 )
 pointB = Vector2( 145, 345 )
@@ -64,12 +73,14 @@ position = Vector2( 512, 300 )
 
 [node name="Camera2" type="Node2D" parent="rooms"]
 
-[node name="Karen" parent="rooms/Camera2" instance=ExtResource( 7 )]
-position = Vector2( 919.084, 379.064 )
-rotation = -3.07714
-
 [node name="Customer" parent="rooms/Camera2" instance=ExtResource( 9 )]
-position = Vector2( 140.038, 279.682 )
+position = Vector2( -234.863, -174.423 )
+
+[node name="Customer2" parent="rooms/Camera2" instance=ExtResource( 9 )]
+position = Vector2( 530.779, -47.6959 )
+
+[node name="Customer3" parent="rooms/Camera2" instance=ExtResource( 9 )]
+position = Vector2( -456.635, 364.167 )
 
 [node name="Employee" parent="rooms/Camera2" instance=ExtResource( 8 )]
 position = Vector2( 151.626, 359.236 )
@@ -99,18 +110,8 @@ position = Vector2( 512, 300 )
 [node name="Camera3" type="Node2D" parent="rooms"]
 position = Vector2( -1024, 0 )
 
-[node name="Karen" parent="rooms/Camera3" instance=ExtResource( 7 )]
-position = Vector2( 919.084, 379.064 )
-rotation = -3.07714
-
 [node name="Customer" parent="rooms/Camera3" instance=ExtResource( 9 )]
 position = Vector2( 140.038, 279.682 )
-
-[node name="Employee" parent="rooms/Camera3" instance=ExtResource( 8 )]
-position = Vector2( 151.626, 359.236 )
-rotation = -0.163404
-pointA = Vector2( 145, 145 )
-pointB = Vector2( 145, 345 )
 
 [node name="Shelf" type="Sprite" parent="rooms/Camera3"]
 position = Vector2( 577.21, 188.351 )
@@ -135,14 +136,14 @@ position = Vector2( 512, 300 )
 position = Vector2( -1024, -512 )
 
 [node name="Karen" parent="rooms/Camera4" instance=ExtResource( 7 )]
-position = Vector2( 908.148, 346.256 )
-rotation = -3.07714
+position = Vector2( 1890.28, 884.845 )
+rotation = -0.639216
 
 [node name="Customer" parent="rooms/Camera4" instance=ExtResource( 9 )]
 position = Vector2( 140.038, 279.682 )
 
 [node name="Employee" parent="rooms/Camera4" instance=ExtResource( 8 )]
-position = Vector2( 151.626, 359.236 )
+position = Vector2( 449.89, 560.922 )
 rotation = -0.163404
 pointA = Vector2( 145, 145 )
 pointB = Vector2( 145, 345 )
