@@ -8,6 +8,7 @@ export var scene = ""
 export var scl = 2.0
 export var color = Color()
 export var stacking = false
+export var text = ""
 var stacks = 0
 
 var mouse_inside = false
@@ -20,6 +21,7 @@ func _input(event):
 func _ready():
 	if sprite!= null: sprite.connect("animation_finished", self, "anim_done")
 	if stacking: tex_progress.tint_progress = Color("66ffffff")
+	$Label.text = text
 
 func cooldown():
 	tw.stop_all()
@@ -57,6 +59,8 @@ func _on_HUDButton_mouse_exited():
 	mouse_inside = false
 	tooltip.stop()
 	$Label.hide()
+	$TextBox2.hide()
 
 func _on_Tooltip_Delay_timeout():
 	$Label.show()
+	$TextBox2.show()
