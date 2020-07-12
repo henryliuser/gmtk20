@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Syringe/vax.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://global/cursor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://global/HUD.gd" type="Script" id=7]
+[ext_resource path="res://joystix monospace.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://global/HUDButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Globe/Stand/Globe6.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Globe/Stand/Globe5.png" type="Texture" id=11]
@@ -80,7 +81,6 @@ position = Vector2( 580, 556 )
 scene = "res://Items/Vaccine.tscn"
 scl = 1.75
 color = Color( 0.490196, 0.788235, 0.4, 1 )
-text = "Many have tried to vaccinate Karen. You might be the first, but if you are, she's going to run rage laps. Could be easier to tell where she'll go."
 
 [node name="sprite" type="AnimatedSprite" parent="buttons/vax"]
 show_behind_parent = true
@@ -94,7 +94,6 @@ base_cd = 6.0
 scene = "res://Items/Oils.tscn"
 scl = 3.0
 color = Color( 0.866667, 0.498039, 0.498039, 1 )
-text = "Essential oils: any Karen's best friend. The scent draws her in and calms her down, but might pull your customers into her range of consumption."
 
 [node name="sprite" type="Sprite" parent="buttons/oils"]
 show_behind_parent = true
@@ -108,7 +107,6 @@ scene = "res://Items/ToiletPaper.tscn"
 scl = 1.5
 color = Color( 1, 1, 1, 1 )
 stacking = true
-text = "Everyone knows that a Karen can never have enough toilet paper. Drop some of the goods near her, and she'll drop everything to grab it."
 
 [node name="sprite" type="Sprite" parent="buttons/tp"]
 show_behind_parent = true
@@ -162,6 +160,20 @@ margin_right = 864.403
 margin_bottom = 547.836
 custom_fonts/font = SubResource( 2 )
 text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="globesStacks2" type="Label" parent="."]
+margin_left = 64.9305
+margin_top = 525.971
+margin_right = 364.931
+margin_bottom = 584.971
+custom_fonts/font = SubResource( 2 )
+text = "employees x5
+karens x2"
 align = 1
 valign = 1
 __meta__ = {
