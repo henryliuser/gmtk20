@@ -13,5 +13,4 @@ func hit(where):
 	var hit = hm.instance()
 	hit.position = where
 	get_tree().current_scene.add_child(hit)
-	print(hit.position)
 	$AudioStreamPlayer.play()

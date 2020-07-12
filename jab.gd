@@ -7,5 +7,5 @@ func _ready():
 func _on_jab_body_entered(body):
 	if "rage" in body:
 		Global.hit(global_position)
-		body.hit(3, global_position, 2, 30)
+		body.hit(3, global_position, 3, 30)
 		queue_free()

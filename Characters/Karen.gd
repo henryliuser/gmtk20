@@ -33,6 +33,7 @@ func _physics_process(delta):
 	time += delta
 	var collider = $RayCast2D.get_collider()
 	if hitstun > 0:
+		$Sprite.global_rotation_degrees = lerp_angle($Sprite.global_rotation, -PI/2, 0.03)
 		hitstun -= 1
 		velocity = lerp(velocity, Vector2(), 0.2)
 	elif vax_instances > 0:
@@ -56,9 +57,10 @@ func _physics_process(delta):
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 	
 	move_and_slide(velocity)
-	rotation = lerp_angle(rotation, angle, .1)
-	if hitstun > 0: rotation_degrees= 46
-	else: calc_sprite_rot()
+	if hitstun > 0: pass
+	else: 
+		calc_sprite_rot()
+		rotation = lerp_angle(rotation, angle, .1)
 	position_text()
 #	rotation = lerp_angle(rotation, (angle/4)+PI/2, .1)
 #	rotation = 0
@@ -106,6 +108,7 @@ func calc_sprite_rot():
 	var rot = rotation_degrees
 	if rotation_degrees < 0: rot = 360+rotation_degrees
 	$Sprite.global_rotation_degrees = 0
+#	$Sprite.global_rotation_degrees = lerp($Sprite.global_rotation_degrees, 0, 0.2)
 	if rot >= 315 or rot < 45: $Sprite.play("right")
 	if rot >= 45 and rot < 135: $Sprite.play("front")
 	if rot >= 135 and rot < 225: $Sprite.play("left")
@@ -122,10 +125,15 @@ func die():
 var hitstun = 0
 func hit(dmg, source, stun = 20, kb = 200):
 	hp -= dmg
+	modulate.a = 0.7
+	yield(get_tree().create_timer(0.1, false), "timeout")
+	modulate.a = 1
 	set_rage(rage+dmg/15.0)
 	hpbar.value = hp
 	hitstun = stun
 	velocity = (global_position-source).normalized()*kb
+	if velocity.x < 0: rotation_degrees = 15
+	else: rotation_degrees = -15
 	audio.stream = hurts[randi()%4]
 	audio.pitch_scale = 0.75 + randf()/2 if audio.stream != hurts[1] else 1.5
 	audio.play()
@@ -133,17 +141,18 @@ func hit(dmg, source, stun = 20, kb = 200):
 	
 func enrage():
 	velocity = Vector2(0, 1)
-	rotation_degrees = 46
+	rotation_degrees = -90
+	scale += Vector2(0.4, 0.4)
 	set_rage(rage+1)
 	$Sprite.play("front")
 	hitstun = 40
 	$Tween.stop_all()
-	$Tween.interpolate_property($Sprite, "rotation_degrees", 0, 25, 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	$Tween.interpolate_property($Sprite, "rotation_degrees", 25, -70, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.4)
-	$Tween.interpolate_property(self, "scale", scale, scale+Vector2(0.1,0.1), 0.4)
-	$Tween.interpolate_property(self, "scale", scale+Vector2(0.1,0.1), scale+Vector2(0.2,0.2), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.5)
+#	$Tween.interpolate_property($Sprite, "rotation_degrees", 0, 359, 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+#	$Tween.interpolate_property($Sprite, "rotation_degrees", 25, -70, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.4)
+	$Tween.interpolate_property(self, "scale", scale, scale-Vector2(0.3,0.3), 0.4)
+#	$Tween.interpolate_property(self, "scale", scale+Vector2(0.1,0.1), scale+Vector2(0.2,0.2), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.5)
 	$Tween.start()
-	yield(get_tree().create_timer(1,false), "timeout")
+	yield(get_tree().create_timer(0.5,false), "timeout")
 	if scale.x > 2: scale = Vector2(2,2)
 
 func position_text():
