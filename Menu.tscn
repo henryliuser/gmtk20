@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://button.png" type="Texture" id=1]
 [ext_resource path="res://joystix monospace.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menu.gd" type="Script" id=3]
-[ext_resource path="res://Assets/menustuff/just karen and title.png" type="Texture" id=4]
 [ext_resource path="res://Assets/menustuff/titletext.png" type="Texture" id=5]
 [ext_resource path="res://Assets/menustuff/karen_no_title.png" type="Texture" id=6]
 [ext_resource path="res://Assets/wiggle.shader" type="Shader" id=7]
@@ -118,10 +117,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="just karen and title" type="Sprite" parent="."]
-position = Vector2( 1597.44, 324.832 )
-texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 repeat = true
