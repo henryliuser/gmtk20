@@ -119,11 +119,11 @@ position = Vector2( 751.958, -107.289 )
 rotation = 3.02405
 
 [node name="Karen2" parent="Karens" instance=ExtResource( 7 )]
-position = Vector2( 628.5, -129.89 )
+position = Vector2( -791.571, -297.92 )
 rotation = 3.02405
 
 [node name="Karen3" parent="Karens" instance=ExtResource( 7 )]
-position = Vector2( 703.471, -230.143 )
+position = Vector2( 153.286, -396.686 )
 rotation = 3.02405
 
 [node name="Employees" type="Node2D" parent="."]
@@ -146,7 +146,7 @@ pointB = Vector2( -480, 150 )
 [node name="Customers" type="Node2D" parent="."]
 
 [node name="Customer" parent="Customers" instance=ExtResource( 9 )]
-position = Vector2( -398.528, -116.686 )
+position = Vector2( 72.8463, 341.305 )
 
 [node name="Customer7" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( -340.536, 338.331 )
@@ -155,7 +155,10 @@ position = Vector2( -340.536, 338.331 )
 position = Vector2( -319.718, 186.659 )
 
 [node name="Customer6" parent="Customers" instance=ExtResource( 9 )]
-position = Vector2( -441.062, -263.658 )
+position = Vector2( -64.8544, 198.794 )
+
+[node name="Customer9" parent="Customers" instance=ExtResource( 9 )]
+position = Vector2( 277.152, 177.976 )
 
 [node name="Customer2" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( -516.108, 113.675 )
@@ -167,4 +170,4 @@ position = Vector2( 780.9, 328.517 )
 position = Vector2( -560.094, 369.806 )
 
 [node name="Customer5" parent="Customers" instance=ExtResource( 9 )]
-position = Vector2( -679.097, -175.509 )
+position = Vector2( -674.637, 101.07 )
