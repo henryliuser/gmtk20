@@ -30,7 +30,6 @@ script = ExtResource( 5 )
 position = Vector2( 12.5277, 5.83833 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
-frame = 3
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
