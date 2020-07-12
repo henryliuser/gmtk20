@@ -11,6 +11,5 @@ func _input(event):
 	elif event.is_action_pressed("cam_3"): switch_cam(3)
 	elif event.is_action_pressed("cam_4"): switch_cam(4)
 	
-
 func switch_cam(num):
 	cam.target = $rooms.get_child(num-1).get_node("Center").global_position
