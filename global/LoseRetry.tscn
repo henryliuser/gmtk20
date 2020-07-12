@@ -46,10 +46,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Node2D" parent="."]
-position = Vector2( 512, 547.389 )
+[node name="Quit" type="Node2D" parent="Label"]
+position = Vector2( 450, 447.389 )
 
-[node name="Quit" type="TextureButton" parent="Quit"]
+[node name="Quit" type="TextureButton" parent="Label/Quit"]
 modulate = Color( 0.470588, 0.894118, 0.4, 1 )
 margin_left = -64.0
 margin_top = -26.0
@@ -62,7 +62,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Quit"]
+[node name="Label" type="Label" parent="Label/Quit"]
 margin_left = -52.5
 margin_top = -18.0
 margin_right = 52.5
@@ -75,10 +75,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Node2D" parent="."]
-position = Vector2( 512, 480 )
+[node name="Start" type="Node2D" parent="Label"]
+position = Vector2( 450, 380 )
 
-[node name="Start" type="TextureButton" parent="Start"]
+[node name="Start" type="TextureButton" parent="Label/Start"]
 modulate = Color( 0.470588, 0.894118, 0.4, 1 )
 margin_left = -64.0
 margin_top = -26.0
@@ -91,7 +91,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Start"]
+[node name="Label" type="Label" parent="Label/Start"]
 margin_left = -52.5
 margin_top = -18.0
 margin_right = 52.5
@@ -111,5 +111,5 @@ stream = ExtResource( 4 )
 volume_db = -7.068
 pitch_scale = 1.13
 autoplay = true
-[connection signal="pressed" from="Quit/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="Start/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Label/Quit/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Label/Start/Start" to="." method="_on_Start_pressed"]

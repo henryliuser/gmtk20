@@ -15,7 +15,7 @@ var mouse_inside = false
 var tooltip_delay = 0
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and mouse_inside:
+	if event is InputEventMouseButton and event.pressed and mouse_inside and event.button_index == BUTTON_LEFT:
 		_on_HUDButton_pressed()
 
 func _ready():

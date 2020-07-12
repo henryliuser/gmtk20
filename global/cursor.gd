@@ -9,7 +9,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed: click()
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT: click()
 
 func _physics_process(delta):
 	if justSelected: justSelected = false

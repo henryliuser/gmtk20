@@ -3,7 +3,7 @@ var thing = ""
 var clicked = false
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and !clicked:
+	if event is InputEventMouseButton and event.pressed and !clicked and event.button_index == BUTTON_LEFT:
 		clicked = true
 		var item
 		if thing != "": 
