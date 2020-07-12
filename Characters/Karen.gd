@@ -87,7 +87,7 @@ func untpAlert():
 func oilAlert(x, y):
 	oilChasing = true
 	notChasing = false
-	angle = atan2(y - position.y, x-position.x)
+	angle = atan2(y - global_position.y, x-global_position.x)
 	velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 	spawn_text(3, oilLines[randi()%3])
 	

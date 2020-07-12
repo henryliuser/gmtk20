@@ -59,7 +59,7 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Body"]
-rotation = -1.5708
+rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 500 )
 
@@ -68,7 +68,7 @@ rotation = -1.5708
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "right"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Tween" type="Tween" parent="Body"]

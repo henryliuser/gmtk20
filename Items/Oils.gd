@@ -65,10 +65,11 @@ func _physics_process(delta):
 #		print(x.name + " " + str(x.rage))
 		x.rage -= delta/1.5
 	for karen in karen_list.keys():
-		karen_list[karen].cast_to = 1.5 * (karen.position - position)
+		var relLocation = (karen.global_position - global_position)
+		karen_list[karen].cast_to = 1.5 * relLocation
 		var collider = karen_list[karen].get_collider()
 		if collider != null and "oilChasing" in collider:
-			karen.oilAlert(position.x, position.y)
+			karen.oilAlert(global_position.x, global_position.y)
 			alerted_karens.append(karen)
 
 func end():
