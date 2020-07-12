@@ -2,6 +2,7 @@ extends Area2D
 onready var sprite = $sprite
 onready var tex_progress = $TextureProgress
 onready var tw = $Tween
+onready var tooltip = $Tooltip_Delay
 export var base_cd = 3.0
 export var scene = ""
 export var scl = 2.0
@@ -10,6 +11,7 @@ export var stacking = false
 var stacks = 0
 
 var mouse_inside = false
+var tooltip_delay = 0
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and mouse_inside:
@@ -46,12 +48,15 @@ func update_stacks(howmuch):
 	else: tex_progress.tint_progress = Color("66ffffff")
 
 func _on_HUDButton_mouse_entered():
+	tooltip.start()
 	mouse_inside = true
-	print('enter')
 	if sprite.has_method("play"):
 		sprite.play()
 
 func _on_HUDButton_mouse_exited():
-	print('exit')
 	mouse_inside = false
+	tooltip.stop()
+	$Label.hide()
 
+func _on_Tooltip_Delay_timeout():
+	$Label.show()

@@ -23,10 +23,10 @@ func _ready():
 
 func _process(delta):
 	for karen in karen_list.keys():
-		karen_list[karen].cast_to = 1.5 * (karen.position - position)
+		karen_list[karen].cast_to = 1.5 * (karen.global_position - global_position)
 		var collider = karen_list[karen].get_collider()
 		if collider != null and "rage" in collider:
-			karen.tpAlert(position.x, position.y)
+			karen.tpAlert(global_position.x, global_position.y)
 			alerted_karens.append(karen)
 
 func _on_TP2_body_entered(body):
@@ -52,10 +52,8 @@ func _on_Zone_body_entered(body):
 
 func _on_Zone_body_exited(body):
 	if "rage" in body and karen_list[body] != null:
+		body.untpAlert()
 		karen_list[body].queue_free()
 		karen_list.erase(body)
 
 
-func _on_TP2_body_exited(body):
-	if "rage" in body: 
-		body.untpAlert()

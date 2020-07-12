@@ -19,14 +19,10 @@ use_filter = true
 font_data = ExtResource( 8 )
 
 [node name="HUD" type="Node2D"]
+z_index = 1
 script = ExtResource( 7 )
 
 [node name="background" type="Node2D" parent="."]
-
-[node name="HUD" type="Sprite" parent="background"]
-position = Vector2( 512, 300 )
-scale = Vector2( 8, 8 )
-texture = ExtResource( 1 )
 
 [node name="HUDSlot" type="Sprite" parent="background"]
 position = Vector2( 576.099, 556 )
@@ -57,6 +53,16 @@ texture = ExtResource( 4 )
 position = Vector2( 976.099, 556 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 4 )
+
+[node name="HUDSlot7" type="Sprite" parent="background"]
+position = Vector2( 35.6519, 556 )
+scale = Vector2( 100, 8 )
+texture = ExtResource( 4 )
+
+[node name="HUD" type="Sprite" parent="background"]
+position = Vector2( 512, 300 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 1 )
 
 [node name="buttons" type="Node2D" parent="."]
 

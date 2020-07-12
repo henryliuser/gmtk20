@@ -32,7 +32,8 @@ func _physics_process(delta):
 		
 	elif notChasing and collider != null and ("customer" in collider or "employee" in collider):
 		spawn_text(3, "it's high noon!")
-		angle = atan2($RayCast2D.get_collider().position.y - position.y, $RayCast2D.get_collider().position.x - position.x)
+		angle = atan2($RayCast2D.get_collider().global_position.y - global_position.y, 
+			$RayCast2D.get_collider().global_position.x - global_position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 		if collider.has_method("toggleForklift") and collider.forklift == true:
 			angle -= PI
@@ -52,7 +53,7 @@ func _physics_process(delta):
 func tpAlert(x, y):
 	if not oilChasing:
 		notChasing = false
-		angle = atan2(y - position.y, x-position.x)
+		angle = atan2(y - global_position.y, x-global_position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 	
 func untpAlert():

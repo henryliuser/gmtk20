@@ -6,6 +6,10 @@ onready var vax = $buttons/vax
 onready var oils = $buttons/oils
 onready var tp = $buttons/tp
 
+func _process(delta):
+	if get_tree().current_scene.name == "Warudo":
+		HUD.global_position = get_tree().current_scene.cam.global_position - Vector2(512,300)
+
 func _on_tp_pressed():
 	if tp.stacks > 0:
 		var aoe2 = load("res://Items/AOE.tscn").instance()
