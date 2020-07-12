@@ -10,7 +10,7 @@ var angle = 0
 var notChasing = true
 var oilChasing = false
 var text
-var hp = 10
+var hp = 100.0
 onready var hpbar = get_node("../hpbar/poli/hpbar")
 onready var audio = get_node("../AudioStreamPlayer2D")
 onready var k = [load("res://Assets/SFX/kar1.wav"), 
@@ -120,11 +120,12 @@ func die():
 	get_parent().queue_free()
 
 var hitstun = 0
-func hit(dmg, source, stun = 20):
+func hit(dmg, source, stun = 20, kb = 200):
 	hp -= dmg
-	hpbar.value = hp * 10
+	set_rage(rage+dmg/15.0)
+	hpbar.value = hp
 	hitstun = stun
-	velocity = source-global_position.normalized()*200
+	velocity = (global_position-source).normalized()*kb
 	audio.stream = hurts[randi()%4]
 	audio.pitch_scale = 0.75 + randf()/2 if audio.stream != hurts[1] else 1.5
 	audio.play()

@@ -37,5 +37,5 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_hitbox_body_entered(body):
 	if is_instance_valid(body) and "rage" in body:
-		body.hit(2, global_position)
+		body.hit(20, global_position)
 		body.vax()

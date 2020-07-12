@@ -32,9 +32,9 @@ func select(path, scl, mod = Color("ffffff")):
 	tw.start()
 	get_tree().current_scene.call_deferred("add_child", aoe)
 	
-	
+var j = preload("res://Items/jab.tscn")
+var jab_available = true
 func click():
-	print(global_position)
 	if !justSelected: 
 		selected = false
 		scale = Vector2(3.5,3.5)
@@ -42,6 +42,13 @@ func click():
 		tw.interpolate_property(self, "scale", scale, og_scale, 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		tw.interpolate_property(self, "rotation", rotation, 0, 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		tw.start()
+	if HUD.visible and jab_available:
+		var jab = j.instance()
+		jab.position = global_position+get_tree().current_scene.cam.global_position-Vector2(512,300)
+		get_tree().current_scene.add_child(jab)
+		jab_available = false
+		yield(get_tree().create_timer(1, false), "timeout")
+		jab_available = true
 		
 func white(really):
 	if really: $cursor2.show()

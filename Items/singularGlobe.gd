@@ -11,7 +11,7 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.has_method("hit"):
-		body.hit(5, global_position)
+		body.hit(40, global_position)
 
 func _on_Timer_timeout():
 	$Tween.interpolate_property(self, "modulate:a", 1, 0, 0.5)

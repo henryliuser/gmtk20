@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/hitmarker.png" type="Texture" id=1]
+[ext_resource path="res://Items/hitmarker.gd" type="Script" id=2]
+
+[node name="hitmarker" type="Sprite"]
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
