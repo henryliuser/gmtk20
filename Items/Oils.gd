@@ -20,8 +20,8 @@ func _ready():
 	modulate.a = 0.3
 	$Tween.interpolate_property(self, "modulate:a", modulate.a, 1, 1)
 	var target = global_position + Vector2(-30,2)
-	tw.interpolate_property(sprite, "global_position", Vector2(660,560), target, time,
-		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tw.interpolate_property(sprite, "global_position", HUD.global_position+Vector2(660,560), 
+		target, time, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tw.interpolate_property(aoe, "scale", Vector2(), Vector2(3,3), time+0.5,
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, time+0.1)
 	tw.interpolate_property(sprite, "rotation_degrees", 0, 720, time,
@@ -32,7 +32,7 @@ func _ready():
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, time+0.6)
 	tw.interpolate_property(sprite, "rotation_degrees", 0, 100, time,
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 2)
-	tw.interpolate_property(sprite, "global_position", target, Vector2(-50,200), 
+	tw.interpolate_property(sprite, "global_position", target, Vector2(-5000,2000), 
 		time, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 2)
 	tw.start()
 	yield(get_tree().create_timer(time+0.1, false), "timeout")

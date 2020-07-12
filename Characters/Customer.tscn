@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/Customer.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Customer/Back/Customer10.png" type="Texture" id=2]
@@ -9,15 +9,23 @@
 [ext_resource path="res://Assets/Customer/Front/Customer2.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Customer/Front/Customer3.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Customer/Back/Customer7.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Customer2/Right/Customer15.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Customer2/Left/Customer9.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Customer2/Left/Customer12.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Customer2/Right/Customer13.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Customer2/Right/Customer14.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Customer2/Left/Customer10.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Customer2/Left/Customer11.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Customer2/Right/Customer16.png" type="Texture" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
@@ -43,8 +51,9 @@ script = ExtResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-animation = "front"
-frame = 1
+animation = "left"
+frame = 2
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 3, 3 )

@@ -38,14 +38,14 @@ func anim_done():
 	sprite.stop()
 
 func _on_HUDButton_pressed():
-	if stacking: HUD._on_tp_pressed()
+	if stacking and name == "tp": HUD._on_tp_pressed()
 	if tex_progress.value == 0 or stacks > 0: 
 		HUD.cursor.select(scene, scl, color)
 
 onready var og_tint = tex_progress.tint_progress
 func update_stacks(howmuch):
 	stacks += howmuch
-	get_parent().get_node("../TPStacks").text = str(stacks)
+	get_parent().get_node("../" + name + "Stacks").text = str(stacks)
 	if stacks == 0: tex_progress.tint_progress = og_tint
 	else: tex_progress.tint_progress = Color("66ffffff")
 

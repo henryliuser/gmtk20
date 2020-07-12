@@ -8,7 +8,7 @@ var time = 0.9
 func _ready():
 	HUD.vax.cooldown()
 	target = global_position
-	global_position = Vector2(530, 595)
+	global_position = HUD.global_position+Vector2(530, 595)
 	modulate.a = 0.3
 	hbox.hide()
 	$Tween.interpolate_property(self, "modulate:a", modulate.a, 1, 1)
