@@ -108,20 +108,10 @@ stacking = true
 
 [node name="sprite" type="Sprite" parent="buttons/globes"]
 show_behind_parent = true
-position = Vector2( -8.25018, 2.53314 )
+position = Vector2( -1.64307, -6.19762 )
 rotation = -0.340609
-scale = Vector2( 0.9, 0.9 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 10 )
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="buttons/globes"]
-show_behind_parent = true
-position = Vector2( 1.38123, -2.49268 )
-
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="buttons/globes"]
-show_behind_parent = true
-position = Vector2( 11.1655, 10.7449 )
-rotation = 0.435757
-scale = Vector2( 0.7, 0.7 )
 
 [node name="tpStacks" type="Label" parent="."]
 margin_left = 744.403
