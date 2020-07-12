@@ -126,6 +126,7 @@ scene = "res://Items/Globes.tscn"
 scl = 1.75
 color = Color( 0.517647, 0.752941, 0.823529, 1 )
 stacking = true
+text = "Place a stack of globes."
 
 [node name="sprite" type="Sprite" parent="buttons/globes"]
 show_behind_parent = true
@@ -133,6 +134,16 @@ position = Vector2( -1.64307, -6.19762 )
 rotation = -0.340609
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 10 )
+
+[node name="fork" parent="buttons" instance=ExtResource( 9 )]
+position = Vector2( 900, 556 )
+base_cd = 30.0
+scene = "res://Items/forklift.tscn"
+scl = 1.5
+color = Color( 0.968627, 0.976471, 0.0509804, 1 )
+text = "Convert an employee into a forklift."
+
+[node name="sprite" type="Sprite" parent="buttons/fork"]
 
 [node name="tpStacks" type="Label" parent="."]
 margin_left = 744.403
