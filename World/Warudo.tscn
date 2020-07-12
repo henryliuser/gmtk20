@@ -30,63 +30,10 @@ script = ExtResource( 3 )
 [node name="Camera1" type="Node2D" parent="rooms"]
 position = Vector2( 0, -512 )
 
-[node name="Karen" parent="rooms/Camera1" instance=ExtResource( 7 )]
-position = Vector2( 774.756, 866.611 )
-rotation = -1.88538
-
-[node name="Customer" parent="rooms/Camera1" instance=ExtResource( 9 )]
-position = Vector2( -41.5289, 273.183 )
-
-[node name="Customer2" parent="rooms/Camera1" instance=ExtResource( 9 )]
-position = Vector2( 217.482, 531.376 )
-
-[node name="Employee" parent="rooms/Camera1" instance=ExtResource( 8 )]
-position = Vector2( -348.241, 535.246 )
-rotation = -0.163404
-pointA = Vector2( 145, 145 )
-pointB = Vector2( 145, 345 )
-
-[node name="Employee2" parent="rooms/Camera1" instance=ExtResource( 8 )]
-position = Vector2( -297.634, 887.599 )
-rotation = -0.163404
-pointA = Vector2( 145, 145 )
-pointB = Vector2( 145, 345 )
-
-[node name="Shelf" type="Sprite" parent="rooms/Camera1"]
-position = Vector2( 577.21, 188.351 )
-rotation = 1.5708
-scale = Vector2( 4, 3.82505 )
-texture = ExtResource( 1 )
-
-[node name="Shelf2" type="Sprite" parent="rooms/Camera1"]
-position = Vector2( 287.372, 304.986 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
-
-[node name="Shelf1" type="Sprite" parent="rooms/Camera1"]
-position = Vector2( 696.761, 193.016 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
-
 [node name="Center" type="Position2D" parent="rooms/Camera1"]
 position = Vector2( 512, 300 )
 
 [node name="Camera2" type="Node2D" parent="rooms"]
-
-[node name="Customer" parent="rooms/Camera2" instance=ExtResource( 9 )]
-position = Vector2( -234.863, -174.423 )
-
-[node name="Customer2" parent="rooms/Camera2" instance=ExtResource( 9 )]
-position = Vector2( 530.779, -47.6959 )
-
-[node name="Customer3" parent="rooms/Camera2" instance=ExtResource( 9 )]
-position = Vector2( -456.635, 364.167 )
-
-[node name="Employee" parent="rooms/Camera2" instance=ExtResource( 8 )]
-position = Vector2( 151.626, 359.236 )
-rotation = -0.163404
-pointA = Vector2( 145, 145 )
-pointB = Vector2( 145, 345 )
 
 [node name="Shelf" type="Sprite" parent="rooms/Camera2"]
 position = Vector2( 577.21, 188.351 )
@@ -110,9 +57,6 @@ position = Vector2( 512, 300 )
 [node name="Camera3" type="Node2D" parent="rooms"]
 position = Vector2( -1024, 0 )
 
-[node name="Customer" parent="rooms/Camera3" instance=ExtResource( 9 )]
-position = Vector2( 140.038, 279.682 )
-
 [node name="Shelf" type="Sprite" parent="rooms/Camera3"]
 position = Vector2( 577.21, 188.351 )
 rotation = 1.5708
@@ -135,34 +79,49 @@ position = Vector2( 512, 300 )
 [node name="Camera4" type="Node2D" parent="rooms"]
 position = Vector2( -1024, -512 )
 
-[node name="Karen" parent="rooms/Camera4" instance=ExtResource( 7 )]
-position = Vector2( 1890.28, 884.845 )
-rotation = -0.639216
-
-[node name="Customer" parent="rooms/Camera4" instance=ExtResource( 9 )]
-position = Vector2( 140.038, 279.682 )
-
-[node name="Employee" parent="rooms/Camera4" instance=ExtResource( 8 )]
-position = Vector2( 449.89, 560.922 )
-rotation = -0.163404
-pointA = Vector2( 145, 145 )
-pointB = Vector2( 145, 345 )
-
-[node name="Shelf" type="Sprite" parent="rooms/Camera4"]
-position = Vector2( 577.21, 188.351 )
-rotation = 1.5708
-scale = Vector2( 4, 3.82505 )
-texture = ExtResource( 1 )
-
-[node name="Shelf2" type="Sprite" parent="rooms/Camera4"]
-position = Vector2( 287.372, 304.986 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
-
-[node name="Shelf1" type="Sprite" parent="rooms/Camera4"]
-position = Vector2( 696.761, 193.016 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
-
 [node name="Center" type="Position2D" parent="rooms/Camera4"]
 position = Vector2( 512, 300 )
+
+[node name="chars" type="Node2D" parent="."]
+
+[node name="Karen" parent="chars" instance=ExtResource( 7 )]
+position = Vector2( 750.471, -108.776 )
+rotation = 3.02405
+
+[node name="Employee" parent="chars" instance=ExtResource( 8 )]
+position = Vector2( -41.2889, -297.999 )
+pointA = Vector2( -50, -300 )
+pointB = Vector2( -600, -300 )
+
+[node name="Employee2" parent="chars" instance=ExtResource( 8 )]
+position = Vector2( -91.5537, 276.457 )
+pointA = Vector2( -150, 150 )
+pointB = Vector2( 200, -100 )
+
+[node name="Employee4" parent="chars" instance=ExtResource( 8 )]
+position = Vector2( 308.404, -49.7456 )
+pointA = Vector2( 150, 150 )
+pointB = Vector2( 300, 300 )
+
+[node name="Employee5" parent="chars" instance=ExtResource( 8 )]
+position = Vector2( 567.156, -358.153 )
+pointA = Vector2( 238, -238 )
+pointB = Vector2( 567.156, -358.153 )
+
+[node name="Customer" parent="chars" instance=ExtResource( 9 )]
+position = Vector2( -398.528, -116.686 )
+
+[node name="Customer6" parent="chars" instance=ExtResource( 9 )]
+position = Vector2( 604.289, -274.067 )
+
+[node name="Customer2" parent="chars" instance=ExtResource( 9 )]
+position = Vector2( -236.963, 35.9035 )
+
+[node name="Customer3" parent="chars" instance=ExtResource( 9 )]
+position = Vector2( 780.9, 328.517 )
+
+[node name="Customer4" parent="chars" instance=ExtResource( 9 )]
+position = Vector2( -560.094, 369.806 )
+
+[node name="Customer5" parent="chars" instance=ExtResource( 9 )]
+position = Vector2( -867.068, -382.372 )

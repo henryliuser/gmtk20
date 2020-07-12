@@ -19,7 +19,7 @@ func _on_Area2D_body_entered(body):
 		for x in range(3):
 			var q = load("res://Items/singularGlobe.tscn").instance()
 			q.position = global_position + Vector2(randf(),randf())
-			get_tree().current_scene.add_child(q)
+			get_tree().current_scene.call_deferred("add_child",q)
 #		body.die()
 		$Area2D.queue_free()
 		yield(get_tree().create_timer(0.5, false), "timeout")

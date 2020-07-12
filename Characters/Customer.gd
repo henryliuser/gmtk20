@@ -30,6 +30,7 @@ func _on_Area2D_body_entered(body):
 	if "rage" in body:
 		#death
 		die(true)
+		body.enrage()
 
 func oilAlert(x, y):
 	oilChasing = true
@@ -44,6 +45,14 @@ func unoilAlert():
 func die(bite = false):
 	queue_free()
 	if bite: Global.bite(global_position)
+
+var hitstun = 0
+var hp = 5
+func hit(dmg, source):
+	hp -= dmg
+	hitstun = 20
+	velocity = source-global_position.normalized()*200
+	if hp <= 0: die()
 
 func calc_sprite_rot():
 	while rotation_degrees >= 360: rotation_degrees -= 360

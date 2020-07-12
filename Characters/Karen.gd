@@ -10,6 +10,7 @@ var angle = 0
 var notChasing = true
 var oilChasing = false
 var text
+var hp = 10
 
 var vax_instances = 0
 var vax_center = Vector2()
@@ -23,7 +24,10 @@ func _ready():
 func _physics_process(delta):
 	time += delta
 	var collider = $RayCast2D.get_collider()
-	if vax_instances > 0:
+	if hitstun > 0:
+		hitstun -= 1
+		velocity = lerp(velocity, Vector2(), 0.2)
+	elif vax_instances > 0:
 		var ang = atan2(vax_center.y-global_position.y, vax_center.x-global_position.x)-PI/2
 		var spd = Vector2(cos(ang), sin(ang))
 		angle = ang
@@ -45,7 +49,8 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity)
 	rotation = lerp_angle(rotation, angle, .1)
-	calc_sprite_rot()
+	if hitstun > 0: rotation_degrees= 46
+	else: calc_sprite_rot()
 	position_text()
 #	rotation = lerp_angle(rotation, (angle/4)+PI/2, .1)
 #	rotation = 0
@@ -98,7 +103,33 @@ func calc_sprite_rot():
 	if rot >= 225 and rot < 315: $Sprite.play("back")
 
 func die():
+	$Tween.stop_all()
+	$Tween.interpolate_property(self, "modulate:a", 1, 0, 0.5)
+	$Tween.start()
+	yield(get_tree().create_timer(0.5, false), "timeout")
 	queue_free()
+
+var hitstun = 0
+func hit(dmg, source):
+	hp -= dmg
+	hitstun = 20
+	velocity = source-global_position.normalized()*200
+	if hp <= 0: die()
+	
+func enrage():
+	velocity = Vector2(0, 1)
+	rotation_degrees = 46
+	set_rage(rage+1)
+	$Sprite.play("front")
+	hitstun = 40
+	$Tween.stop_all()
+	$Tween.interpolate_property($Sprite, "rotation_degrees", 0, 25, 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$Tween.interpolate_property($Sprite, "rotation_degrees", 25, -70, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.4)
+	$Tween.interpolate_property(self, "scale", scale, scale+Vector2(0.1,0.1), 0.4)
+	$Tween.interpolate_property(self, "scale", scale+Vector2(0.1,0.1), scale+Vector2(0.2,0.2), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.5)
+	$Tween.start()
+	yield(get_tree().create_timer(1,false), "timeout")
+	if scale.x > 2: scale = Vector2(2,2)
 
 func position_text():
 	if text != null:

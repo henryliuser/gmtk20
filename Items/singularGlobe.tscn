@@ -23,13 +23,14 @@ radius = 16.8164
 [node name="singularGlobe" type="RigidBody2D"]
 mass = 4.29
 gravity_scale = 0.0
+contact_monitor = true
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 12.5277, 5.83833 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -115,18 +115,18 @@ texture = ExtResource( 2 )
 
 [node name="globes" parent="buttons" instance=ExtResource( 9 )]
 position = Vector2( 820, 556 )
-base_cd = 1.0
+base_cd = 10.0
 scene = "res://Items/Globes.tscn"
 scl = 1.75
 color = Color( 0.517647, 0.752941, 0.823529, 1 )
 stacking = true
 
-[node name="sprite" type="AnimatedSprite" parent="buttons/globes"]
+[node name="sprite" type="Sprite" parent="buttons/globes"]
 show_behind_parent = true
-position = Vector2( -14.9259, 4.41388 )
-rotation = -0.287979
+position = Vector2( -8.25018, 2.53314 )
+rotation = -0.340609
 scale = Vector2( 0.9, 0.9 )
-frames = SubResource( 1 )
+texture = ExtResource( 10 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="buttons/globes"]
 show_behind_parent = true

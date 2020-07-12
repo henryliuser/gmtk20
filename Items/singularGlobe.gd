@@ -10,8 +10,8 @@ func _physics_process(delta):
 			angular_velocity *= -1.2
 
 func _on_Area2D_body_entered(body):
-	if body.has_method("die"):
-		body.die()
+	if body.has_method("hit"):
+		body.hit(5, global_position)
 
 func _on_Timer_timeout():
 	$Tween.interpolate_property(self, "modulate:a", 1, 0, 0.5)

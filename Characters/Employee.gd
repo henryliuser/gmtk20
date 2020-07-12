@@ -40,6 +40,7 @@ func _on_Area2D_body_entered(body):
 	if "rage" in body:
 		if !forklift:
 			die(true)
+			body.enrage()
 		else:
 			body.die()
 
