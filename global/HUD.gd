@@ -6,6 +6,7 @@ onready var vax = $buttons/vax
 onready var oils = $buttons/oils
 onready var tp = $buttons/tp
 onready var globes = $buttons/globes
+onready var fork = $buttons/fork
 
 func _process(delta):
 	if get_tree().current_scene.name == "Warudo":
