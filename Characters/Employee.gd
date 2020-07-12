@@ -9,7 +9,10 @@ var angle = 0
 var speed = 0
 var employee = 0
 var forklift = false
-
+var text
+var karenLines = ["ma’am i work at target", "ma’am you cant be here without a mask", "ma’am please stay 6 feet away"]
+var globeLines = ["who the fuck stocked these", "i knew i’d die at this store", "balls"]
+var forkLines = ["im finally assistant to the regional manager", "vroom vroom"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,6 +37,7 @@ func _process(delta):
 	rotation = lerp_angle(rotation, angle, .1)
 	move_and_slide(speed * vec)
 	calc_sprite_rot()
+	position_text()
 
 
 func _on_Area2D_body_entered(body):
@@ -57,10 +61,36 @@ func calc_sprite_rot():
 	var rot = rotation_degrees
 	if rotation_degrees < 0: rot = 360+rotation_degrees
 	$Sprite.global_rotation_degrees = 0
-	if rot >= 315 or rot < 45: $Sprite.play("right")
-	if rot >= 45 and rot < 135: $Sprite.play("front")
-	if rot >= 135 and rot < 225: $Sprite.play("left")
-	if rot >= 225 and rot < 315: $Sprite.play("back")
+	if forklift:
+		if rot >= 315 or rot < 45: $Sprite.play("rightFork")
+		if rot >= 45 and rot < 135: $Sprite.play("frontFork")
+		if rot >= 135 and rot < 225: $Sprite.play("leftFork")
+		if rot >= 225 and rot < 315: $Sprite.play("backFork")
+	else:
+		if rot >= 315 or rot < 45: $Sprite.play("right")
+		if rot >= 45 and rot < 135: $Sprite.play("front")
+		if rot >= 135 and rot < 225: $Sprite.play("left")
+		if rot >= 225 and rot < 315: $Sprite.play("back")
 
 func toggleForklift():
 	forklift =  !forklift
+	if forklift:
+		spawn_text(2, forkLines[randi()%2])
+
+func position_text():
+	if text != null:
+		text.rect_position = Vector2(30, -30) + global_position
+
+func spawn_text(lifetime, line):
+	if text == null or text.alive != true:
+		text = load("res://Dialogue/TextBubble.tscn").instance()
+		text.setLifetime(lifetime)
+		text.text = line
+		text.align = 1
+		text.valign = 1
+		get_tree().current_scene.add_child(text)
+
+
+func _on_Area2D2_body_entered(body):
+	if "rage" in body:
+		spawn_text(2, karenLines[randi()%3])

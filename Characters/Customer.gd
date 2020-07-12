@@ -12,6 +12,9 @@ var grunts = [load("res://Assets/SFX/hm1.wav"),
 var customer = 0
 var notChasing = true
 var oilChasing = false
+var text
+var globeLines = ["who the fuck stocked these", "i knew i’d die at this store", "balls"]
+var oilLines = ["owo whats this", "smells nice", "who put this here", "can you believe some people replace doctors with these"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +39,7 @@ func _process(delta):
 	move_and_slide(velocity)
 	rotation = lerp_angle(rotation, angle, .1)
 	calc_sprite_rot()
+	position_text()
 
 func _on_Area2D_body_entered(body):
 	if "rage" in body:
@@ -48,6 +52,7 @@ func oilAlert(x, y):
 	notChasing = false
 	angle = atan2(y - position.y, x-position.x)
 	velocity = Vector2(cos(angle),sin(angle)) * 50
+	spawn_text(3, oilLines[randi()%4])
 	
 func unoilAlert():
 	notChasing = true
@@ -65,6 +70,11 @@ func hit(dmg, source):
 	hitstun = 20
 	velocity = source-global_position.normalized()*200
 	if hp <= 0: die()
+	else:
+		if text!=null:
+			text.elapsedTime = text.lifetime
+			text.alive = false
+		spawn_text(2, globeLines[randi()%3])
 
 func calc_sprite_rot():
 	while rotation_degrees >= 360: rotation_degrees -= 360
@@ -76,3 +86,16 @@ func calc_sprite_rot():
 	if rot >= 45 and rot < 135: $Sprite.play("front")
 	if rot >= 135 and rot < 225: $Sprite.play("left")
 	if rot >= 225 and rot < 315: $Sprite.play("back")
+
+func position_text():
+	if text != null:
+		text.rect_position = Vector2(30, -30) + global_position
+
+func spawn_text(lifetime, line):
+	if text == null or text.alive != true:
+		text = load("res://Dialogue/TextBubble.tscn").instance()
+		text.setLifetime(lifetime)
+		text.text = line
+		text.align = 1
+		text.valign = 1
+		get_tree().current_scene.add_child(text)

@@ -22,6 +22,12 @@ onready var hurts = [load("res://Assets/SFX/hurt1.wav"),
 					load("res://Assets/SFX/hurt4.wav")]
 var vax_instances = 0
 var vax_center = Vector2()
+var alertLines = ["its high noon", "are you the manager?", "if you dont come here you're oppressing me", "don't you know that masks are how the deep state controls you",]
+var wallLines = ["touch me again and i’ll sue", "which incompetent let this be here", "this would never have happened in the good days", "i cant believe this happened to me"]
+var oilLines = ["finally some good fucking food", "science told me these solve immunocompromisation", "did you know i sell these!"]
+var tpLines = ["god, this is exactly what i needed", "mine", "i sense an essential item"]
+var vaxLines = ["i already took my oils tho", "are you trying to give me 5g???", "this has definitely not been tested enough"]
+var globeLines = ["the real earth wouldnt roll", "i cant believe they still make these in the wrong shape", "christopher columbus debunked these 50 years ago"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,14 +50,17 @@ func _physics_process(delta):
 		if is_on_wall(): vax(true)
 		
 	elif notChasing and collider != null and ("customer" in collider or "employee" in collider):
-		spawn_text(3, "it's high noon!")
 		angle = atan2($RayCast2D.get_collider().global_position.y - global_position.y, 
 			$RayCast2D.get_collider().global_position.x - global_position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
 		if collider.has_method("toggleForklift") and collider.forklift == true:
 			angle -= PI
 			velocity *= -1
+		else:
+			spawn_text(3, alertLines[randi()%4])
 	elif notChasing and (time > 1 + randf() * 15 or is_on_wall()):
+		if is_on_wall():
+			spawn_text(1, wallLines[randi()%4])
 		time = 0;
 		angle = (randi()%360 - 180)*(2*PI)/360
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
@@ -70,6 +79,7 @@ func tpAlert(x, y):
 		notChasing = false
 		angle = atan2(y - global_position.y, x-global_position.x)
 		velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
+		spawn_text(2, tpLines[randi()%3])
 	
 func untpAlert():
 	notChasing = true
@@ -79,6 +89,7 @@ func oilAlert(x, y):
 	notChasing = false
 	angle = atan2(y - position.y, x-position.x)
 	velocity = Vector2(cos(angle),sin(angle)) * 50 * rage
+	spawn_text(3, oilLines[randi()%3])
 	
 func unoilAlert():
 	notChasing = true
@@ -95,6 +106,7 @@ func set_rage(ragen):
 
 		
 func vax(chain = false):
+	spawn_text(1, vaxLines[randi()%3])
 	if !chain: 
 		vax_instances += 1
 		set_rage(rage+2)
@@ -124,6 +136,10 @@ func die():
 
 var hitstun = 0
 func hit(dmg, source, stun = 20, kb = 200):
+	if text!=null:
+		text.elapsedTime = text.lifetime
+		text.alive = false
+	spawn_text(2, globeLines[randi()%3])
 	hp -= dmg
 	modulate.a = 0.7
 	yield(get_tree().create_timer(0.1, false), "timeout")

@@ -126,6 +126,7 @@ scene = "res://Items/Globes.tscn"
 scl = 1.75
 color = Color( 0.517647, 0.752941, 0.823529, 1 )
 stacking = true
+text = "An unstable stack of 3D models of the Earth. By nature of being round (not flat) and poorly made, they'll come free and roll around if walked into."
 
 [node name="sprite" type="Sprite" parent="buttons/globes"]
 show_behind_parent = true
