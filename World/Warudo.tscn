@@ -123,7 +123,7 @@ rotation = -3.07714
 position = Vector2( 140.038, 279.682 )
 
 [node name="Employee" parent="rooms/Camera3" instance=ExtResource( 8 )]
-position = Vector2( 151.626, 359.236 )
+position = Vector2( 474.353, 234.531 )
 rotation = -0.163404
 pointA = Vector2( 145, 145 )
 pointB = Vector2( 145, 345 )

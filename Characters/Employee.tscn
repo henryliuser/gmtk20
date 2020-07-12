@@ -1,33 +1,41 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/Employee.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Employee/Back/Employee7.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Employee/Front/Employee2.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Employee/Front/Employee3.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Employee/Back/Employee5.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Employee/Back/Employee6.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Employee/Front/Employee1.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Employee/Back/Employee8.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Employee/Front/Employee4.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Employee2/Front/Employee2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Employee2/Right/Employee16.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Employee2/Right/Employee13.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Employee2/Back/Employee8.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Employee2/Right/Employee15.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Employee2/Back/Employee5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Employee2/Front/Employee4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Employee2/Front/Employee3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Employee2/Left/Employee9.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Employee2/Left/Employee10.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Employee2/Left/Employee11.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Employee2/Left/Employee12.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Employee2/Right/Employee14.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Employee2/Front/Employee1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Employee2/Back/Employee6.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Employee2/Back/Employee7.png" type="Texture" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 4 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "back",
 "speed": 5.0
@@ -41,11 +49,9 @@ animations = [ {
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -5.66516, -1.67421 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "back"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
