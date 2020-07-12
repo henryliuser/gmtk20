@@ -6,6 +6,9 @@ extends KinematicBody2D
 var time = 0
 var velocity = Vector2(0,0)
 var angle = 0
+var grunts = [load("res://Assets/SFX/hm1.wav"),
+			  load("res://Assets/SFX/hm2.wav"),
+			  load("res://Assets/SFX/hm3.wav")]
 var customer = 0
 var notChasing = true
 var oilChasing = false
@@ -14,6 +17,14 @@ var oilChasing = false
 func _ready():
 	var angle = (randi()%360 - 180)*(2*PI)/360
 	velocity = Vector2(cos(angle),sin(angle)) * 50
+	while true:
+		grunt()
+		yield(get_tree().create_timer(randf()*5+2, false), "timeout")
+		
+func grunt():
+	$AudioStreamPlayer2D.pitch_scale = 0.9 + randf()/5
+	$AudioStreamPlayer2D.stream = grunts[randi()%3]
+	$AudioStreamPlayer2D.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

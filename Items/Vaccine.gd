@@ -22,6 +22,7 @@ func _ready():
 	yield(get_tree().create_timer(time, false), "timeout")
 	hbox.show(); hbox.monitoring = true
 	$AnimatedSprite.play()
+	$AudioStreamPlayer2D.play()
 	yield(get_tree().create_timer(0.3, false), "timeout")
 	hbox.monitoring = false; hbox.hide()
 	

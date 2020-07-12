@@ -36,6 +36,7 @@ func _ready():
 		time, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 2)
 	tw.start()
 	yield(get_tree().create_timer(time+0.1, false), "timeout")
+	$AudioStreamPlayer2D.play()
 	aoe.visible = true
 	hitbox.monitoring = true
 	started = true

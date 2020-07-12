@@ -18,9 +18,9 @@ texture = ExtResource( 2 )
 [node name="Label3" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 347.0
-margin_top = 300.0
+margin_top = 276.0
 margin_right = 677.0
-margin_bottom = 348.0
+margin_bottom = 324.0
 custom_fonts/font = SubResource( 1 )
 text = "THANK YOU!"
 align = 1
@@ -30,6 +30,7 @@ __meta__ = {
 }
 
 [node name="credits" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="Label" type="Label" parent="credits"]
 margin_left = 44.1012

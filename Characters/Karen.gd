@@ -144,6 +144,7 @@ func position_text():
 
 func spawn_text(lifetime, line):
 	audio.stream = k[randi()%3]
+	audio.pitch_scale = 0.75 + randf()/2
 	audio.play()
 	if text == null or text.alive != true:
 		text = load("res://Dialogue/TextBubble.tscn").instance()

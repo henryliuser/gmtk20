@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/menustuff/karen_no_title.png" type="Texture" id=6]
 [ext_resource path="res://Assets/wiggle.shader" type="Shader" id=7]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 7 )
 shader_param/time_factor = 1.0
 shader_param/amplitude = Vector2( 5, 5 )
@@ -27,7 +27,7 @@ position = Vector2( 512, 300 )
 texture = ExtResource( 6 )
 
 [node name="titletext" type="Sprite" parent="."]
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( 509.051, 268.178 )
 texture = ExtResource( 5 )
 
