@@ -36,7 +36,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Tooltip_Delay" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.6
 one_shot = true
 
 [node name="TextBox2" type="Sprite" parent="."]

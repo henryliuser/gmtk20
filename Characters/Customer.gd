@@ -43,8 +43,9 @@ func unoilAlert():
 	oilChasing = false
 
 func die(bite = false):
-	queue_free()
 	if bite: Global.bite(global_position)
+	HUD.recount()
+	queue_free()
 
 var hitstun = 0
 var hp = 5

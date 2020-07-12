@@ -11,7 +11,7 @@ var notChasing = true
 var oilChasing = false
 var text
 var hp = 10
-
+onready var hpbar = get_node("../hpbar/poli/hpbar")
 var vax_instances = 0
 var vax_center = Vector2()
 
@@ -81,7 +81,8 @@ func set_rage(ragen):
 		rage = ragen
 	modulate.g = clamp(1/(rage/2.0), 0, 1)
 	modulate.b = clamp(1/(rage/2.0), 0, 1)
-	print(rage)
+	$Sprite.speed_scale = rage/4 + 0.75
+
 		
 func vax(chain = false):
 	if !chain: 
@@ -107,11 +108,13 @@ func die():
 	$Tween.interpolate_property(self, "modulate:a", 1, 0, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5, false), "timeout")
-	queue_free()
+	HUD.recount()
+	get_parent().queue_free()
 
 var hitstun = 0
 func hit(dmg, source):
 	hp -= dmg
+	hpbar.value = hp * 10
 	hitstun = 20
 	velocity = source-global_position.normalized()*200
 	if hp <= 0: die()
@@ -143,3 +146,4 @@ func spawn_text(lifetime, line):
 		text.align = 1
 		text.valign = 1
 		get_tree().current_scene.add_child(text)
+

@@ -82,46 +82,58 @@ position = Vector2( -1024, -512 )
 [node name="Center" type="Position2D" parent="rooms/Camera4"]
 position = Vector2( 512, 300 )
 
-[node name="chars" type="Node2D" parent="."]
+[node name="Karens" type="Node2D" parent="."]
 
-[node name="Karen" parent="chars" instance=ExtResource( 7 )]
+[node name="Karen" parent="Karens" instance=ExtResource( 7 )]
 position = Vector2( 750.471, -108.776 )
 rotation = 3.02405
 
-[node name="Employee" parent="chars" instance=ExtResource( 8 )]
+[node name="Karen2" parent="Karens" instance=ExtResource( 7 )]
+position = Vector2( -254.513, 346.207 )
+rotation = 3.02405
+
+[node name="Karen3" parent="Karens" instance=ExtResource( 7 )]
+position = Vector2( -340.393, -249.474 )
+rotation = 3.02405
+
+[node name="Employees" type="Node2D" parent="."]
+
+[node name="Employee" parent="Employees" instance=ExtResource( 8 )]
 position = Vector2( -41.2889, -297.999 )
 pointA = Vector2( -50, -300 )
 pointB = Vector2( -600, -300 )
 
-[node name="Employee2" parent="chars" instance=ExtResource( 8 )]
+[node name="Employee2" parent="Employees" instance=ExtResource( 8 )]
 position = Vector2( -91.5537, 276.457 )
 pointA = Vector2( -150, 150 )
 pointB = Vector2( 200, -100 )
 
-[node name="Employee4" parent="chars" instance=ExtResource( 8 )]
+[node name="Employee4" parent="Employees" instance=ExtResource( 8 )]
 position = Vector2( 308.404, -49.7456 )
 pointA = Vector2( 150, 150 )
 pointB = Vector2( 300, 300 )
 
-[node name="Employee5" parent="chars" instance=ExtResource( 8 )]
+[node name="Employee5" parent="Employees" instance=ExtResource( 8 )]
 position = Vector2( 567.156, -358.153 )
 pointA = Vector2( 238, -238 )
 pointB = Vector2( 567.156, -358.153 )
 
-[node name="Customer" parent="chars" instance=ExtResource( 9 )]
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="Customer" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( -398.528, -116.686 )
 
-[node name="Customer6" parent="chars" instance=ExtResource( 9 )]
+[node name="Customer6" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( 604.289, -274.067 )
 
-[node name="Customer2" parent="chars" instance=ExtResource( 9 )]
+[node name="Customer2" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( -236.963, 35.9035 )
 
-[node name="Customer3" parent="chars" instance=ExtResource( 9 )]
+[node name="Customer3" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( 780.9, 328.517 )
 
-[node name="Customer4" parent="chars" instance=ExtResource( 9 )]
+[node name="Customer4" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( -560.094, 369.806 )
 
-[node name="Customer5" parent="chars" instance=ExtResource( 9 )]
+[node name="Customer5" parent="Customers" instance=ExtResource( 9 )]
 position = Vector2( -867.068, -382.372 )

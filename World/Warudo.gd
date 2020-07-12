@@ -1,9 +1,16 @@
 extends Node2D
 onready var cam = $Camera2D
+onready var employees = $Employees
+onready var customers = $Customers
+onready var karens = $Karens
 var curr = 0
 
 func _ready():
 	switch_cam(1)
+	HUD.white(false)
+	while true: 
+		HUD.recount()
+		yield(get_tree().create_timer(1, false), "timeout")
 
 func _input(event):
 	if event.is_action_pressed("cam_1"): switch_cam(1)
@@ -13,3 +20,5 @@ func _input(event):
 	
 func switch_cam(num):
 	cam.target = $rooms.get_child(num-1).get_node("Center").global_position
+
+	

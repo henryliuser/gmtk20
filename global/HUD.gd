@@ -16,3 +16,19 @@ func _on_tp_pressed():
 		var aoe2 = load("res://Items/AOE.tscn").instance()
 		aoe2.scale = Vector2(4,4)
 		get_tree().current_scene.call_deferred("add_child", aoe2)
+
+func recount():
+	var emps = len(get_tree().current_scene.employees.get_children())
+	var custs = len(get_tree().current_scene.customers.get_children())
+	var kars = len(get_tree().current_scene.karens.get_children())
+	$emp_count.text = "employees " + str(emps)
+	$kar_count.text = "karens    " + str(kars)
+	$cust_count.text = "customers " + str(custs)
+	employee_mult = 5 if emps <= 0 else 5/emps
+	if custs <= 0: Global.game_over()
+	if kars <= 0: Global.win()
+	
+func white(r):
+	cursor.white(r)
+
+	

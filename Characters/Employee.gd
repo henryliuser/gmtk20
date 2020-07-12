@@ -45,8 +45,11 @@ func _on_Area2D_body_entered(body):
 			body.die()
 
 func die(bite = false):
-	queue_free()
 	if bite: Global.bite(global_position)
+	HUD.recount()
+	queue_free()
+	
+	
 
 func calc_sprite_rot():
 	while rotation_degrees >= 360: rotation_degrees -= 360

@@ -42,3 +42,8 @@ func click():
 		tw.interpolate_property(self, "scale", scale, og_scale, 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		tw.interpolate_property(self, "rotation", rotation, 0, 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		tw.start()
+		
+func white(really):
+	if really: $cursor2.show()
+	else: $cursor2.hide()
+
