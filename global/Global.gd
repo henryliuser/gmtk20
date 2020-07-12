@@ -8,6 +8,9 @@ func bite(pos):
 func game_over():
 	get_tree().change_scene("res://global/LoseRetry.tscn")
 
+func win():
+	get_tree().change_scene("res://global/Win.tscn")
+
 var hm = preload("res://Items/hitmarker.tscn")
 func hit(where):
 	var hit = hm.instance()
