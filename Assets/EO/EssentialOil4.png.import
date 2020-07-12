@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PoisonCloud6.png-db789a50b3904ca5413d7655722610e6.stex"
+path="res://.import/EssentialOil4.png-4433107b845a91086e2aeece49709c50.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PoisonGas/PoisonCloud6.png"
-dest_files=[ "res://.import/PoisonCloud6.png-db789a50b3904ca5413d7655722610e6.stex" ]
+source_file="res://Assets/EO/EssentialOil4.png"
+dest_files=[ "res://.import/EssentialOil4.png-4433107b845a91086e2aeece49709c50.stex" ]
 
 [params]
 

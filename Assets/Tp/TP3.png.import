@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PoisonCloud6.png-db789a50b3904ca5413d7655722610e6.stex"
+path="res://.import/TP3.png-d260117a68e46d285f9d3d29058820d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PoisonGas/PoisonCloud6.png"
-dest_files=[ "res://.import/PoisonCloud6.png-db789a50b3904ca5413d7655722610e6.stex" ]
+source_file="res://Assets/Tp/TP3.png"
+dest_files=[ "res://.import/TP3.png-d260117a68e46d285f9d3d29058820d7.stex" ]
 
 [params]
 
