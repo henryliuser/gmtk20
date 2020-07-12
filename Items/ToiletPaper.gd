@@ -7,7 +7,7 @@ var alerted_karens = []
 func _ready():
 	HUD.tp.update_stacks(-1)
 	var target = global_position
-	global_position = Vector2(750, 555)
+	global_position = HUD.global_position+Vector2(750, 555)
 	modulate.a = 0.3
 	$Zone.hide(); $TP2.hide()
 	$Tween.interpolate_property(self, "modulate:a", modulate.a, 1, 1)
