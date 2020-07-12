@@ -3,7 +3,13 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	HUD.globes.update_stacks(-1)
-	pass # Replace with function body.
+	$Tween.interpolate_property(self, "global_position", Vector2(-1000, -1000), global_position,
+		2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "global_rotation_degrees", 1079, 0, 1.5,
+		 Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.5)
+	$Tween.start()
+	yield(get_tree().create_timer(3, false), "timeout")
+	$Area2D.monitoring = true
 	#gotta add henrys entry animation
 
 
