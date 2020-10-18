@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/menustuff/titletext.png" type="Texture" id=5]
+[ext_resource path="res://Assets/menustuff/karen_no_title.png" type="Texture" id=6]
+[ext_resource path="res://Assets/wiggle.shader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 7 )
+shader_param/time_factor = 1.0
+shader_param/amplitude = Vector2( 5, 5 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="karen_no_title" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+texture = ExtResource( 6 )
+
+[node name="titletext" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 509.051, 268.178 )
+texture = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="Tween2" type="Tween" parent="."]
